@@ -1,0 +1,22 @@
+{% extends 'recipes/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<form method="POST">
+    {% csrf_token %}
+
+
+    {% comment %}{{ form|crispy }}{% endcomment %}
+    {{ form }}
+
+    <button class="btn btn-outline-info" type="submit">Login</button>
+    </div>
+</form>
+<br>
+Need An Account?
+<a href="{% url 'register' %}">Sign Up Now</a>
+
+
+
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends "recipes/base.html" %}
+
+{% block content %}
+
+<h1>Top 5 ingredients are:</h1>
+
+{% for ingredient in topFive %}
+
+<h2>{{ ingredient }}</h2>
+
+{% endfor %}
+
+
+<h1>Recipe(s) with maximum number of ingredients</h1>
+
+{% for recipe in maxRecipe %}
+
+<h2>Recipe: {{ recipe.title }}</h2>
+<p>Created by <a href="{% url 'user-recipes' recipe.user.username %}">{{ recipe.user }}</a></p>
+<p>Posted on: {{ recipe.date_posted|date:"F d, Y" }}</p>
+<p>Instructions: {{ recipe.content }}</p>
+<p>Average rating: {{ recipe.average_rating }}</p>
+<p>Number of ingredients: {{ recipe.ingredientNumber }}</p>
+
+{% endfor %}
+
+<h1>Recipe(s) with minimum number of ingredients</h1>
+
+{% for recipe in minRecipe %}
+
+<h2>Recipe: {{ recipe.title }}</h2>
+<p>Created by <a href="{% url 'user-recipes' recipe.user.username %}">{{ recipe.user }}</a></p>
+<p>Posted on: {{ recipe.date_posted|date:"F d, Y" }}</p>
+<p>Instructions: {{ recipe.content }}</p>
+<p>Average rating: {{ recipe.average_rating }}</p>
+<p>Number of ingredients: {{ recipe.ingredientNumber }}</p>
+
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends "recipes/base.html" %}
+
+{% block content %}
+
+
+{% if recipes %}
+<h2>Search Result Found</h2>
+
+{% for recipe in recipes %}
+
+<h1>Recipe: {{ recipe.title }}</h1>
+<p>Created by <a href="{% url 'user-recipes' recipe.user.username %}">{{ recipe.user }}</a></p>
+<p>Posted on: {{ recipe.date_posted|date:"F d, Y" }}</p>
+<p>Instructions: {{ recipe.content }}</p>
+<p>Average rating: {{ recipe.average_rating }}</p>
+
+{% if recipe.user != user and not voted and user.is_authenticated %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ rating_form }}
+    <button class="btn btn-outline-info" type="submit">Rate!</button><br>
+</form>
+
+{% endif %}
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'recipes/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h1>Profile page for {{ user.username }}</h1>
+
+
+<p>First name: {{ user.first_name }}</p>
+<p>Last name: {{ user.last_name }}</p>
+<p>Email: {{ user.email }}</p>
+
+{% endblock content %}

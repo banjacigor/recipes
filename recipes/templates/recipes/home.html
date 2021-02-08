@@ -1,0 +1,19 @@
+{% extends "recipes/base.html" %}
+
+{% block content %}
+
+<form method='GET' action="{% url  'search' %}"">
+    <input type=" text" name="search" />
+<button type="submit">Search Recipes</button>
+</form>
+
+<h1>Recipes Home Page!</h1>
+{% for recipe in recipes %}
+<h1>Recipe: <a href="{% url 'recipe-detail' recipe.id %}">{{ recipe.title }}</a></h1>
+<p>Created by <a href="{% url 'user-recipes' recipe.user.username %}">{{ recipe.user }}</a></p>
+<p>Posted on: {{ recipe.date_posted|date:"F d, Y" }}</p>
+<p>Instructions: {{ recipe.snippet }}</p>
+<p>Average rating: {{ recipe.average_rating }}</p>
+{% endfor %}
+
+{% endblock content %}

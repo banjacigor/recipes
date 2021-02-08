@@ -1,0 +1,24 @@
+{% extends "recipes/base.html" %}
+
+
+{% block content %}
+
+<form id="recipeForm" action="{% url 'create-new' %}" method="POST">
+    {% csrf_token %}
+
+    <input type="hidden" id="ingredientCounter" value="1">
+    <input type="text" id="title" name="title" placeholder="Recipe title here">
+    <br><br>
+    <textarea name="content" id="content" cols="30" rows="10" placeholder="Recipe content here"></textarea>
+    <hr>
+    <button type="button" id="addIngredient">Add Ingredient</button>
+    <input type="text" id="ingr1" name="ingredient" placeholder="Ingredient Here">
+    <div id="addedIngredients">
+
+    </div>
+    <hr>
+    <button type="submit" name="save">Save</button>
+</form>
+
+
+{% endblock content %}
