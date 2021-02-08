@@ -1,0 +1,7 @@
+Django==2.2.7
+django-crispy-forms>=1.10.0
+clearbit>=0.1.7
+django-decouple>=2.1.0
+djangorestframework>=3.12.2
+djangorestframework-jwt>=1.11.0
+psycopg2>=2.8.6
