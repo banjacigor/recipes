@@ -21,14 +21,12 @@ def about(request):
 def recipeDetail(request, pk):
     recipe = Recipe.objects.get(pk=pk)
     ingredients = recipe.ingredient_set.all().values_list("name", flat=True)
-    print(recipe.ingredient_set.all().values_list("name", flat=True))
 
     username = request.user.username
 
     if request.method == "POST":
         rating_form = RatingForm(request.POST)
         if rating_form.is_valid():
-            print(rating_form.cleaned_data["rating"])
             new_rating = rating_form.cleaned_data["rating"]
             rating = Rating(recipe=recipe, rating=new_rating, who_rated=username)
             rating.save()
@@ -43,7 +41,6 @@ def recipeDetail(request, pk):
         voted = False
         if username in [object.who_rated for object in recipe.rating_set.all()]:
             voted = True
-            print("glasao", voted)
             messages.success(
                 request,
                 "You have already voted on this recipe!",
@@ -122,8 +119,6 @@ def didYouKnow(request):
     ]
     maxRecipe = Recipe.objects.filter(ingredientNumber=maxIngr)
     minRecipe = Recipe.objects.filter(ingredientNumber=minIngr)
-    print(minRecipe)
-    print(maxRecipe)
 
     context = {"topFive": topFive, "maxRecipe": maxRecipe, "minRecipe": minRecipe}
 
