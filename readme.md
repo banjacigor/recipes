@@ -1,6 +1,6 @@
 # Recipes App
 
-A simple recipes app to impress FWW.
+A simple recipes app.
 
 ### SETUP & START
 1. Run `git clone` of the repo
