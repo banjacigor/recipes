@@ -1,6 +1,6 @@
 # Recipes App
 
-A simple recipes app.
+A simple recipes app1.
 
 ### SETUP & START
 1. Run `git clone` of the repo
